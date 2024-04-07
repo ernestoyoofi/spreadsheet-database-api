@@ -37,7 +37,7 @@ function GET_AllDataCollections() {
     getAlldata.push({
       collection: sheet.getName(),
       headers: headers,
-      data: dataCell
+      data: dataCell.map((a, i) => ({key: i, ...a}))
     })
   }
   return getAlldata
@@ -72,7 +72,7 @@ function GET_DataCollection({ collection }) {
   return {
     collection: collection,
     headers: headers,
-    data: dataCell
+    data: dataCell.map((a, i) => ({key: i, ...a}))
   }
 }
 
@@ -205,5 +205,4 @@ function doPost(e) {
   return ContentService.createTextOutput(JSON.stringify(assignFunction))
   .setMimeType(ContentService.MimeType.JSON)
 }
-
 
